@@ -9,6 +9,15 @@ feeds:
         url: "https://gtfs.ztp.krakow.pl/TripUpdates_T.pb"
 
 
+  krkm:
+      name: "Krakow Mobilis"
+      agencies: "ZTP Krakow"
+      gtfs:
+        static:
+          url: "https://gtfs.ztp.krakow.pl/GTFS_KRK_M.zip"
+        rtTripUpdates:
+          url: "https://gtfs.ztp.krakow.pl/TripUpdates_M.pb"
+
   krka:
     name: "Krakow Buses"
     agencies: "MPK Krakow"
