@@ -1,0 +1,39 @@
+services:
+  api:
+    image: ghcr.io/tjhorner/transit-tracker-api:main
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      # Uncomment the below line if running through a reverse proxy (e.g., nginx, caddy, traefik)
+      # TRUST_PROXY: "true"
+      REDIS_URL: "redis://redis:6379"
+      DATABASE_URL: "postgres://postgres:postgres@postgres:5432/gtfs?sslmode=disable"
+      # The below variable controls how frequently GTFS feeds are imported.
+      # This example sets it to once daily at midnight, which is enough
+      # for most use cases. Adjust as needed.
+      FEED_SYNC_SCHEDULE: "0 0 * * *"
+    # 👇 Alternative way to provide feeds configuration
+    volumes:
+      - "./feeds.yaml:/app/feeds.yaml"
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:17
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gtfs
+    volumes:
+      - "db:/var/lib/postgresql/data"
+  
+  redis:
+    image: redis:6
+    expose:
+      - "6379"
+
+volumes:
+  db:
