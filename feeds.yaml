@@ -1,0 +1,19 @@
+feeds:
+  krkt:
+    name: "Krakow Trams"
+    agencies: "ZTP Krakow"
+    gtfs:
+      static:
+        url: "https://gtfs.ztp.krakow.pl/GTFS_KRK_T.zip"
+      rtTripUpdates:
+        url: "https://gtfs.ztp.krakow.pl/TripUpdates_T.pb"
+
+
+  krka:
+    name: "Krakow Buses"
+    agencies: "MPK Krakow"
+    gtfs:
+      static:
+        url: "https://gtfs.ztp.krakow.pl/GTFS_KRK_A.zip"
+      rtTripUpdates:
+        url: "https://gtfs.ztp.krakow.pl/TripUpdates_A.pb"
